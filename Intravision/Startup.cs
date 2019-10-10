@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Intravision.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,6 +44,8 @@ namespace Intravision
             string connectionString = Configuration.GetConnectionString("IntravisionDB");
             if (connectionString.Contains("%CONTENTROOTPATH%"))
                 connectionString = connectionString.Replace("%CONTENTROOTPATH%", _contentRootPath);
+
+            services.AddDbContext<IntravisionDbContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
