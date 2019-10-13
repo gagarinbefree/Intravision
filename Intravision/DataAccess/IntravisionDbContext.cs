@@ -29,6 +29,9 @@ namespace Intravision.DataAccess
             {
                 entity.ToTable("Product");
 
+                entity.Property(c => c.Id)
+                    .ValueGeneratedOnAdd();
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(255);
@@ -43,6 +46,9 @@ namespace Intravision.DataAccess
             modelBuilder.Entity<Coin>(entity =>
             {
                 entity.ToTable("Coin");
+
+                entity.Property(c => c.Id)
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ParValue)
                     .IsRequired();

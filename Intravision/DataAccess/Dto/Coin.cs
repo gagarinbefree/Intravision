@@ -9,7 +9,6 @@ namespace Intravision.DataAccess.Dto
 {
     public class Coin
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         public int ParValue { get; set; }
